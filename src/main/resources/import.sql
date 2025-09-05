@@ -5,6 +5,6 @@
 -- insert into myentity (id, field) values(3, 'field-3');
 -- alter sequence myentity_seq restart with 4;
 
-insert into aluno (id, nome) values(1, 'Joao');
-insert into aluno (id, nome) values(2, 'Maria');
-insert into aluno (id, nome) values(3, 'Pedro');
+insert into aluno (nome) values('Joao');
+insert into aluno (nome) values('Maria');
+insert into aluno (nome) values('Pedro');
