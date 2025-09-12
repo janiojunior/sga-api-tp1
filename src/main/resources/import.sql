@@ -8,3 +8,8 @@
 insert into aluno (nome) values('Joao');
 insert into aluno (nome) values('Maria');
 insert into aluno (nome) values('Pedro');
+
+
+insert into municipio (nome) values('Palmas');
+insert into municipio (nome) values('Araguaína');
+insert into municipio (nome) values('Guripi');

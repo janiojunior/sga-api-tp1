@@ -2,9 +2,9 @@ package br.unitins.topicos1.sga.resource;
 
 import java.util.List;
 
-import br.unitins.topicos1.sga.dto.AlunoDTO;
-import br.unitins.topicos1.sga.model.Aluno;
-import br.unitins.topicos1.sga.service.AlunoService;
+import br.unitins.topicos1.sga.dto.MunicipioDTO;
+import br.unitins.topicos1.sga.model.Municipio;
+import br.unitins.topicos1.sga.service.MunicipioService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
@@ -15,33 +15,33 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
-@Path("/alunos")
+@Path("/municipios")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class AlunoResource {
+public class MunicipioResource {
 
     @Inject
-    AlunoService service;
+    MunicipioService service;
 
     @GET
-    public List<Aluno> buscarTodos() {
+    public List<Municipio> buscarTodos() {
         return service.findAll();
     }
 
     @GET
     @Path("/find/{nome}")
-    public List<Aluno> buscarPorNome(String nome) {
+    public List<Municipio> buscarPorNome(String nome) {
         return service.findByNome(nome);
     }
 
     @POST
-    public Aluno incluir(AlunoDTO dto) {
+    public Municipio incluir(MunicipioDTO dto) {
         return service.create(dto);
     }
 
     @PUT
     @Path("/{id}")
-    public void alterar(Long id, AlunoDTO dto) {
+    public void alterar(Long id, MunicipioDTO dto) {
         service.update(id, dto);
     }
 
