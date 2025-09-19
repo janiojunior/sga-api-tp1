@@ -2,10 +2,9 @@ package br.unitins.topicos1.sga.resource;
 
 import java.util.List;
 
-import br.unitins.topicos1.sga.dto.MunicipioDTO;
-import br.unitins.topicos1.sga.dto.MunicipioDTOResponse;
-import br.unitins.topicos1.sga.model.Municipio;
-import br.unitins.topicos1.sga.service.MunicipioService;
+import br.unitins.topicos1.sga.dto.EstadoDTO;
+import br.unitins.topicos1.sga.dto.EstadoDTOResponse;
+import br.unitins.topicos1.sga.service.EstadoService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
@@ -16,33 +15,33 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
-@Path("/municipios")
+@Path("/estados")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class MunicipioResource {
+public class EstadoResource {
 
     @Inject
-    MunicipioService service;
+    EstadoService service;
 
     @GET
-    public List<MunicipioDTOResponse> buscarTodos() {
+    public List<EstadoDTOResponse> buscarTodos() {
         return service.findAll();
     }
 
     @GET
     @Path("/find/{nome}")
-    public List<MunicipioDTOResponse> buscarPorNome(String nome) {
+    public List<EstadoDTOResponse> buscarPorNome(String nome) {
         return service.findByNome(nome);
     }
 
     @POST
-    public MunicipioDTOResponse incluir(MunicipioDTO dto) {
+    public EstadoDTOResponse incluir(EstadoDTO dto) {
         return service.create(dto);
     }
 
     @PUT
     @Path("/{id}")
-    public void alterar(Long id, MunicipioDTO dto) {
+    public void alterar(Long id, EstadoDTO dto) {
         service.update(id, dto);
     }
 
