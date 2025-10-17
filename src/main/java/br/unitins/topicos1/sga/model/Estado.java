@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 
 @Entity
 public class Estado extends DefaultEntity {
+
     private String nome;
     private String sigla;
     private Regiao regiao;

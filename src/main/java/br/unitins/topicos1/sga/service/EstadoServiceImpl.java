@@ -4,6 +4,7 @@ import java.util.List;
 
 import br.unitins.topicos1.sga.dto.EstadoDTO;
 import br.unitins.topicos1.sga.dto.EstadoDTOResponse;
+import br.unitins.topicos1.sga.exception.ValidationException;
 import br.unitins.topicos1.sga.model.Estado;
 import br.unitins.topicos1.sga.model.Regiao;
 import br.unitins.topicos1.sga.repository.EstadoRepository;
@@ -43,6 +44,9 @@ public class EstadoServiceImpl implements EstadoService {
     @Override
     @Transactional
     public EstadoDTOResponse create(EstadoDTO dto) {
+
+        validarSigla(dto, null);
+
         Estado estado = new Estado();
         estado.setNome(dto.nome());
         estado.setSigla(dto.sigla());
@@ -53,9 +57,18 @@ public class EstadoServiceImpl implements EstadoService {
         return EstadoDTOResponse.valueOf(estado);
     }
 
+    private void validarSigla(EstadoDTO dto, Long id) {
+        Estado e = repository.findBySiglaExceptId(dto.sigla(), id);
+        if (e != null)
+            throw ValidationException.of("sigla", "A sigla informada já foi utilizada.");
+    }
+
     @Override
     @Transactional
     public void update(Long id, EstadoDTO dto) {
+        
+        validarSigla(dto, id);
+
         Estado estado = repository.findById(id);
         estado.setNome(dto.nome());
         estado.setSigla(dto.sigla());
