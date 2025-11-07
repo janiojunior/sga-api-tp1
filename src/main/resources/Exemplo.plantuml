@@ -1,0 +1,82 @@
+@startuml
+
+class Usuario {
+   - nome: String
+   - login: String
+   - senha: String
+}
+
+enum Perfil {
+    - ADM: int
+    - CLIENTE: int
+    - FUNCIONARIO: int
+}
+
+class Endereco {
+    - cep: String
+    - logradouro: String
+    - numero: String
+}
+
+class Cidade {
+   - nome: String 
+}
+
+class Estado {
+    - nome: String
+    - sigla: String
+}
+
+
+class Pedido {
+    - data: LocalDateTime
+    - quantidade: Integer
+}
+
+class ItemPedido {
+    - quantidade: Integer
+    - preco: Double
+}
+
+
+class Faixa {
+    - nome: String
+    - preco: Double
+    - estoque: Integer
+}
+
+class Pagamento {
+    - data: LocalDateTime
+}
+
+class Cartao {
+
+}
+
+class Boleto {
+
+}
+
+class Pix {
+
+}
+
+Cidade "*" --> "1" Estado
+Endereco "*" --> "1" Cidade
+
+Usuario "1" *--> "*" Endereco
+Usuario "*" --> "1" Perfil
+
+Pedido "*" --> "1" Usuario
+Pedido "1" *--> "*" ItemPedido
+Pedido "*" --> "1" Endereco
+
+Pedido "1" *--> "1" Pagamento
+
+ItemPedido  "*" --> "1" Faixa
+
+Pix -up-|> Pagamento
+Cartao -up-|> Pagamento
+Boleto -up-|> Pagamento
+
+@enduml
