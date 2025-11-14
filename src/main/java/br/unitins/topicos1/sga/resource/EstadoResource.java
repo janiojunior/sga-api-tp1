@@ -1,12 +1,9 @@
 package br.unitins.topicos1.sga.resource;
 
-import java.util.List;
-
 import br.unitins.topicos1.sga.dto.EstadoDTO;
-import br.unitins.topicos1.sga.dto.EstadoDTOResponse;
 import br.unitins.topicos1.sga.service.EstadoService;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
-import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -27,12 +24,14 @@ public class EstadoResource {
     EstadoService service;
 
     @GET
+    @RolesAllowed({"ADM","USER"})
     public Response buscarTodos() {
         return Response.ok(service.findAll()).build();
     }
 
     @GET
     @Path("/find/{nome}")
+    @RolesAllowed("USER")
     public Response buscarPorNome(String nome) {
         return Response.ok(service.findByNome(nome)).build();
     }

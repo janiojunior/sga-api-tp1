@@ -7,6 +7,9 @@ import java.util.Base64;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
+import jakarta.enterprise.context.ApplicationScoped;
+
+@ApplicationScoped
 public class HashServiceImpl implements HashService {
 
     private String salt = "#$127732&";
@@ -22,7 +25,7 @@ public class HashServiceImpl implements HashService {
                             iterationCount,
                             keyLength))
                     .getEncoded();
-                    
+
             return Base64.getEncoder().encodeToString(result);
 
         } catch (InvalidKeySpecException e) {
