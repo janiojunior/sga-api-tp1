@@ -8,8 +8,7 @@ class Usuario {
 
 enum Perfil {
     - ADM: int
-    - CLIENTE: int
-    - FUNCIONARIO: int
+    - USER: int
 }
 
 class Endereco {
