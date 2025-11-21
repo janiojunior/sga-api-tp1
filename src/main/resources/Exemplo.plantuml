@@ -38,7 +38,7 @@ class ItemPedido {
 }
 
 
-class Faixa {
+class Plano {
     - nome: String
     - preco: Double
     - estoque: Integer
@@ -72,7 +72,7 @@ Pedido "*" --> "1" Endereco
 
 Pedido "1" *--> "1" Pagamento
 
-ItemPedido  "*" --> "1" Faixa
+ItemPedido  "*" --> "1" Plano
 
 Pix -up-|> Pagamento
 Cartao -up-|> Pagamento

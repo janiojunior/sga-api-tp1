@@ -2,6 +2,7 @@ package br.unitins.topicos1.sga.resource;
 
 import br.unitins.topicos1.sga.dto.EstadoDTO;
 import br.unitins.topicos1.sga.service.EstadoService;
+import io.quarkus.security.Authenticated;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
@@ -18,6 +19,7 @@ import jakarta.ws.rs.core.Response.Status;
 @Path("/estados")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
+@Authenticated
 public class EstadoResource {
 
     @Inject
