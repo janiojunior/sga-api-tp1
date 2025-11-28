@@ -1,5 +1,7 @@
 package br.unitins.topicos1.sga.resource;
 
+import org.jboss.logging.Logger;
+
 import br.unitins.topicos1.sga.dto.EstadoDTO;
 import br.unitins.topicos1.sga.service.EstadoService;
 import io.quarkus.security.Authenticated;
@@ -22,12 +24,15 @@ import jakarta.ws.rs.core.Response.Status;
 @Authenticated
 public class EstadoResource {
 
+    private static final Logger LOG = Logger.getLogger(EstadoResource.class);
+
     @Inject
     EstadoService service;
 
     @GET
     @RolesAllowed({"ADM","USER"})
     public Response buscarTodos() {
+        LOG.info("ENTROU NO MÉTODO buscarTodos");
         return Response.ok(service.findAll()).build();
     }
 
